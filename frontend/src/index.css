@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-cyber-bg:      #050B18;
+  --color-cyber-surface: #0D1526;
+  --color-cyber-card:    #111B2E;
+  --color-cyber-border:  #1E2D45;
+  --color-cyber-cyan:    #00D4FF;
+  --color-cyber-blue:    #0066FF;
+  --color-cyber-safe:    #00E676;
+  --color-cyber-warn:    #FFD600;
+  --color-cyber-danger:  #FF1744;
+  --color-cyber-muted:   #4A6080;
+  --color-cyber-text:    #E2EAF4;
+  --color-cyber-subtle:  #8A9BB5;
+
+  /* Fonts */
+  --font-display: "Orbitron", sans-serif;
+  --font-body:    "Rajdhani", sans-serif;
+  --font-mono:    "JetBrains Mono", monospace;
+
+  /* Animations */
+  --animate-fade-up: fade-up 0.5s ease-out forwards;
+  --animate-glow:    glow 2s ease-in-out infinite alternate;
+
+  /* Keyframes */
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes glow {
+    from { text-shadow: 0 0 10px rgba(0,212,255,0.5); }
+    to   { text-shadow: 0 0 20px rgba(0,212,255,1), 0 0 40px rgba(0,212,255,0.5); }
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background-color: #050B18;
+  color: #E2EAF4;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar         { width: 6px; }
+::-webkit-scrollbar-track   { background: #0D1526; }
+::-webkit-scrollbar-thumb   { background: #00D4FF33; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #00D4FF66; }
+
+.glass {
+  background: rgba(13, 21, 38, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+.glass-hover:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #00D4FF, #0066FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-cyber {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #00D4FF22, #0066FF22);
+  border: 1px solid #00D4FF44;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn-cyber::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.15), transparent);
+  transition: left 0.5s;
+}
+.btn-cyber:hover::before { left: 100%; }
+.btn-cyber:hover {
+  border-color: #00D4FF;
+  box-shadow: 0 0 20px rgba(0,212,255,0.3);
+}
+
+/* QR Scanner overrides */
+#qr-reader { border: none !important; background: transparent !important; }
+#qr-reader video { border-radius: 12px; }
+#qr-reader__scan_region { background: transparent !important; }
+#qr-reader__dashboard { background: transparent !important; padding: 12px 0 0 0 !important; }
+#qr-reader__dashboard_section_csr button,
+#qr-reader__dashboard_section_fsr button {
+  background: linear-gradient(135deg, #00D4FF22, #0066FF22) !important;
+  border: 1px solid #00D4FF44 !important;
+  color: #00D4FF !important;
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+}
+#qr-reader__status_span {
+  color: #8A9BB5 !important;
+  font-family: 'Rajdhani', sans-serif !important;
+}
